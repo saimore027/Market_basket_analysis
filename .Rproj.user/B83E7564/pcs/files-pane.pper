@@ -1,0 +1,9 @@
+{
+    "path" : "~/Market_basket_analysis_3rd_yr",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

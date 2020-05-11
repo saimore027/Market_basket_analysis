@@ -1,0 +1,20 @@
+library(arules)
+library(arulesViz)
+groceries <- read.csv("D:\\mywork\\R project\\Market_basket_analysis_3rd_yr\\groceries.csv")
+rules <- apriori(groceries)
+rules <- apriori(groceries, parameter = list(supp = 0.0001, conf = 0.8))
+inspect(rules[1:5])
+rules<-sort(rules, by="support", decreasing=T)
+inspect(rules[1:5])
+rules
+redundant_rules <- is.redundant(rules)
+redundant_rules
+summary(redundant_rules)
+rules<-rules[!redundant_rules]
+rules
+inspect(rules[1:10])
+rules_margarine <- apriori(groceries,parameter = list(supp = 0.001, conf = 0.8), appearance = list(default = "rhs", lhs = "margarine="))
+rules_margarine <- apriori(groceries,parameter = list(supp = 0.00000001, conf = 0.1), appearance = list(default = "rhs", lhs = "citrus.fruit=canned beer"))
+inspect(rules_margarine[1:2])
+plot(rules, method = "graph")
+plot(rules, method = "graph", interactive = T)
